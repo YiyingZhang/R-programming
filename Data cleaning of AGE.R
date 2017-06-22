@@ -6,6 +6,14 @@ default$AGE[default$AGE<30]<-"Young"
 default$AGE
 
 ##outliers
+install.packages("ggplot2")
+library(ggplot2)
+summary(default)
+ggplot(default,aes(x=B_1))+geom_histogram(fill="white",colour="black")+
+  #facet_grid(B_2~B_,scales = "free")
+  xlim(0,max(default$B_1))+
+  ylim(0,8000)
+                
 ##from B_1 to P_A4,all variables have outliers, replace these outliers with thier upper bond
 lower.quartile<-as.numeric(summary(default$B_1)[2])
 upper.quartile<-as.numeric(summary(default$B_1)[5])
